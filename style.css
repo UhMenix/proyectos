@@ -66,6 +66,10 @@ a, p, ul, li{
     gap: 15rem;
 }
 
+.contenedor{
+    display: flex;
+}
+
 .text{
     text-align: justify; 
     line-height: 1.2; 
@@ -75,3 +79,39 @@ a, p, ul, li{
     font-size: 1rem;
     font-weight: 600;
 }
+
+.aboutinfo{
+    text-align: justify; 
+    line-height: 1.2; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.footer-social img{
+    height: 50px;
+    width: auto;
+    margin-bottom: 10px;
+}
+
+.imagen{
+    height: 170px;
+    padding: 30px;
+    right: auto;
+}
+
+
