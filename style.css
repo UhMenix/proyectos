@@ -90,26 +90,38 @@ a, p, ul, li{
     font-weight: 500;
 }
 
+/* Estilos para el carrusel */
 .carousel {
-    width: 1024px; 
-    height: 576px; 
-    margin: 0 auto; 
+    width: 1024px;
+    height: 576px;
+    margin: 0 auto; /* Centrar horizontalmente */
+    overflow: hidden;
+}
+
+/* Estilos para las imágenes dentro del carrusel */
+.carousel-item {
+    width: 100%;
+    height: 100%;
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
+/* Estilos para los controles del carrusel */
 .carousel-control-prev, .carousel-control-next {
-    width: 5%; 
-    background: rgba(0, 0, 0, 0.5); 
+    width: 5%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    color: white; 
+    color: white;
 }
+
 
 .footer-container {
     position: fixed;
