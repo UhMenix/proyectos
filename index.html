@@ -13,18 +13,31 @@
 </head>
 <body>
     <header class="header">
-        <nav>
-            <a href="./index.html"><img src="../img/image.png" alt="home"> </a>
-            <ul class="nav-links">
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./bikes.html">Bikes</a></li>
-                <li><a href="./contact.html">contact</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html"><img src="../img/image.png" alt="home"> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./bikes.html">Bikes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
     
     <div class="contenedor">
-           <img class="imagen" src="../img/depositphotos_273449038-stock-photo-rows-mountain-bicycles-sports-shop.jpg" >
+           <img class="imagen img-fluid" src="../img/depositphotos_273449038-stock-photo-rows-mountain-bicycles-sports-shop.jpg" alt="Bike shop">
                 <div class="text">
                     <h2>¡Bienvenido a BikeLand! Tu Destino para la Aventura Sobre Ruedas En BikeLand, 
                         creemos que cada pedalada es una oportunidad para explorar, descubrir y disfrutar del mundo que nos rodea. 
@@ -37,13 +50,13 @@
     <div id="carouselExampleControls" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../img/s.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/s.jpg" class="d-block w-100 img-fluid" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="../img/img-133216846-1629412241-c50f82dc41e00149cbfb34b8d565f0d21629412241.jpg" class="d-block w-100" alt="...">
+                    <img src="../img/img-133216846-1629412241-c50f82dc41e00149cbfb34b8d565f0d21629412241.jpg" class="d-block w-100 img-fluid" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="../img/WhatsApp-Image-2023-04-13-at-10.42.49.jpeg" class="d-block w-100" alt="...">
+                    <img src="../img/WhatsApp-Image-2023-04-13-at-10.42.49.jpeg" class="d-block w-100 img-fluid" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

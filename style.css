@@ -19,7 +19,6 @@ a, p, ul, li {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #cbcec2;
-
 }
 
 .header ul {
@@ -70,24 +69,34 @@ a, p, ul, li {
     display: flex;
 }
 
-.text {
-    text-align: justify; 
-    line-height: 1.5; 
-    max-width: 1250px; 
-    margin: 0 auto; 
-    padding: 25px; 
-    font-size: 0.1rem;
-    font-weight: 800;
-}
-
-.aboutinfo {
+.text h2 {
     text-align: justify; 
     line-height: 1.2; 
-    max-width: 1000px; 
+    max-width: 1250px; 
     margin: 0 auto; 
-    padding: 20px; 
-    font-size: 0.95rem;
+    padding: 30px; 
+    font-size: 1.5rem;
     font-weight: 500;
+}
+
+.aboutinfo h2{
+    text-align: justify; 
+    line-height: 1.2; 
+    max-width: 1250px; 
+    margin: 0 auto; 
+    padding: 0px; 
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.ventabici h2 {
+    text-align: justify; 
+    line-height: 1.2; 
+    max-width: 1250px; 
+    margin: 0 auto; 
+    padding: 0px; 
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .fondoabout {
@@ -97,7 +106,7 @@ a, p, ul, li {
 
 .fondoabout img {
     position: absolute; 
-    bottom: 0; 
+    bottom: 5%; 
     left: 50%; 
     transform: translateX(-50%); 
 }
