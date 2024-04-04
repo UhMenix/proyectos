@@ -185,4 +185,15 @@ a, p, ul, li {
     right: auto;
 }
 
+.txt {
+    color: white;
+    text-align: center;
+    background-color: black;
+}
+.cont {
+    text-align: center;
+}
 
+.cont img {
+    width: 350px;
+}
