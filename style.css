@@ -79,14 +79,15 @@ a, p, ul, li {
     font-weight: 500;
 }
 
-.aboutinfo h2{
+.aboutinfo h2, p{
     text-align: justify; 
     line-height: 1.2; 
     max-width: 1250px; 
     margin: 0 auto; 
     padding: 0px; 
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
+    color: #050704;
 }
 
 .ventabici h2 {
@@ -96,29 +97,29 @@ a, p, ul, li {
     margin: 0 auto; 
     padding: 0px; 
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .fondoabout {
-    height: 750px;
+    height: 575px;
     position: relative; 
 }
 
 .fondoabout img {
+    width: 1024px;
+    height: 550px;
     position: absolute; 
-    bottom: 5%; 
+    bottom: 0%; 
     left: 50%; 
     transform: translateX(-50%); 
 }
 
-
 .carousel {
     width: 1024px;
-    height: 576px;
+    height: 450px;
     margin: 0 auto; 
     overflow: hidden;
 }
-
 
 .carousel-item {
     width: 100%;
@@ -136,8 +137,8 @@ a, p, ul, li {
 }
 
 .carousel-control-prev, .carousel-control-next {
-    width: 3rem; 
-    height: 3rem; 
+    width: 6rem; 
+    height: 6rem; 
     font-size: 1rem; 
     background: rgba(0, 0, 0, 0.5); 
 }
@@ -185,11 +186,21 @@ a, p, ul, li {
     right: auto;
 }
 
-.txt {
+.txt{
     color: white;
-    text-align: center;
     background-color: black;
+    padding: 5px; 
+    text-align: center; 
 }
+
+
+.txt p {
+    color: white;
+    background-color: black;
+    padding: 5px; 
+    text-align: center; 
+}
+
 .cont {
     text-align: center;
 }
