@@ -55,14 +55,46 @@ a, p, ul, li {
     cursor: pointer;
 }
 
+.ventabici {
+    padding: 20px;
+    background-color: #f3faf1;
+    margin-bottom: 30px;
+}
+
 .productos {
     display: flex;
-    justify-content: center;
-    height: 250px;
-    width: auto;
-    border-radius: 0.25rem;
-    border-color: #62bf4a;
-    gap: 15rem;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.producto {
+    width: 300px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1.8px solid  #62bf4a; 
+}
+
+.producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.info-venta {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.info-venta h3 {
+    margin: 0;
+    color: #050704;
+}
+
+.info-venta p {
+    margin: 0 0 10px;
+    color: #4d4d4d;
 }
 
 .contenedor {
@@ -192,7 +224,6 @@ a, p, ul, li {
     padding: 5px; 
     text-align: center; 
 }
-
 
 .txt p {
     color: white;
