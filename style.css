@@ -5,7 +5,7 @@ html, body {
     color: #0a1608;
 }
 
-a, p, ul, li {
+a, ul, li {
     text-decoration: none;
     list-style: none;
     color: #f1f3f0;
@@ -101,7 +101,7 @@ a, p, ul, li {
     display: flex;
 }
 
-.text h2 {
+.text h2  {
     text-align: justify; 
     line-height: 1.2; 
     max-width: 1250px; 
@@ -111,7 +111,11 @@ a, p, ul, li {
     font-weight: 500;
 }
 
-.aboutinfo h2, p{
+.text p {
+    font-size: 1.5rem;
+}
+
+.aboutinfo .titulo, .ventabici h2 {
     text-align: justify; 
     line-height: 1.2; 
     max-width: 1250px; 
@@ -122,7 +126,7 @@ a, p, ul, li {
     color: #050704;
 }
 
-.ventabici h2 {
+.aboutinfo p, .txt p {
     text-align: justify; 
     line-height: 1.2; 
     max-width: 1250px; 
@@ -130,6 +134,7 @@ a, p, ul, li {
     padding: 0px; 
     font-size: 1.5rem;
     font-weight: 500;
+    color: #050704;
 }
 
 .fondoabout {
@@ -213,7 +218,7 @@ a, p, ul, li {
 }
 
 .imagen {
-    height: 250px;
+    height: 200px;
     padding: 30px;
     right: auto;
 }
