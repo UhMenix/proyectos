@@ -1,3 +1,4 @@
+/**navbar**/
 html, body {
     margin: 0;
     background-color: #f3faf1;
@@ -54,7 +55,7 @@ a ,ul ,li {
     font-size: 1rem;
     cursor: pointer;
 }
-
+/**html bikes**/
 .ventabici {
     padding: 20px;
     background-color: #f3faf1;
@@ -114,8 +115,8 @@ a ,ul ,li {
 .text p {
     font-size: 1.5rem;
 }
-
-.aboutinfo .titulo, .ventabici h2 {
+/**text venta info about y titulo**/
+.aboutinfo, .ventabici h2 {
     text-align: justify; 
     line-height: 1.2; 
     max-width: 1250px; 
@@ -124,6 +125,9 @@ a ,ul ,li {
     font-size: 1.5rem;
     font-weight: 500;
     color: #050704;
+}
+.titulo{
+    text-align: center;
 }
 
 .aboutinfo p, .txt p {
@@ -137,6 +141,7 @@ a ,ul ,li {
     color: #050704;
 }
 
+
 .fondoabout {
     height: 575px;
     position: relative; 
@@ -144,13 +149,13 @@ a ,ul ,li {
 
 .fondoabout img {
     width: 1024px;
-    height: 550px;
+    height: 450px;
     position: absolute; 
-    bottom: 0%; 
+    bottom: 17%; 
     left: 50%; 
     transform: translateX(-50%); 
 }
-
+/**carousel**/
 .carousel {
     width: 1024px;
     height: 450px;
