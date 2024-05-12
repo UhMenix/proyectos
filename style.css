@@ -57,7 +57,7 @@ a ,ul ,li {
 }
 /**Register form**/
 
-.register{
+.register-form {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -65,9 +65,76 @@ a ,ul ,li {
     color: #fff;
     border-radius: 12px;
     padding: 30px 40px;
+}
+
+.register-form h1 {
+    font-size: 36px;
     text-align: center;
 }
 
+.register-form .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.register-form input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 20px 20px 20px;
+}
+
+.register-form input::placeholder {
+    color: #fff;
+}
+
+.register-form .btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.register-form .register-link {
+    font-size: 14.5px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-form .register-link .back-to-login button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14.5px;
+}
+
+.register-form .register-link .back-to-login button:hover {
+    color: #ccc; /* Cambia el color al pasar el mouse */
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+}
 
 
 /**Login form**/

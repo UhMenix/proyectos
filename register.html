@@ -1,51 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Registro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Register</title>
-<style>
-    label{
-        display: flex;
-        float: left;
-        width: 70px;
-    }
-</style>    
 </head>
 <body style="background-image: url('img/—Pngtree—an orange bicycle leans against_3535191.jpg'); background-size: cover; background-position: center;">
-    <div class="wrapper">
-        <form class="register">
-            <h1>Registrarse</h1>
-            <div>
-                <label for="Nombre"> Nombre </label>
-                <input type="text" id="Nombre" name="Nombre" required minlength="3" maxlength="22">
-            </div>  
-            <div>
-                <label for="Apellido"> Apellido </label>
-                <input type="text" id="Apellido" name="Apellido" required minlength="3" maxlength="22">
-            </div>  
-            <div>
-                <label for="rut"> Rut </label>
-                <input type="text" id="Rut" name="Rut" required minlength="9" maxlength="10">
-            </div>   
-            <div>
-                <label for="correo electronico"> Correo </label>
-                <input type="email" id="correo electronico" name="correo electronico">
-            </div>     
-            <div>
-                <label for="contraseña"> Contraseña </label>
-                <input type="password" id="contraseña" name="contraseña" required min="4" maxlength="22">
-            </div>  
-            <input type="submit" onclick=" return Registrarse()" value="enviar">
-        </form> 
-    <div id="error"></div>
-    <script src="app.js"></script>       
-    </div>    
-    
+  <div class="wrapper">
+    <form class="register-form" id="register-form" action="" style="width: 420px;">
+      <h1>Registrarse</h1>
+      <div class="input-box">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+      </div>
+      <div class="input-box">
+        <input type="text" id="apellido" placeholder="Apellido" required>
+      </div>
+      <div class="input-box">
+        <input type="text" id="rut" placeholder="RUT" required>
+      </div>
+      <div class="input-box">
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+      </div>
+      <div class="input-box">
+        <input type="password" id="contraseña" placeholder="Contraseña" required>
+      </div>
+      <button type="submit" class="btn">Registrarse</button>
+      <div class="register-link">
+        <div class="back-to-login">
+          <button onclick="window.location.href='login.html'">Volver al inicio de sesión</button>
+        </div>
+      </div>
+    </form>
+<script src="java.js"></script>
 </body>
 </html>
