@@ -55,6 +55,20 @@ a ,ul ,li {
     font-size: 1rem;
     cursor: pointer;
 }
+/**Register form**/
+
+.register{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+    text-align: center;
+}
+
+
 
 /**Login form**/
 
@@ -225,31 +239,81 @@ a ,ul ,li {
     font-size: 1.5rem;
 }
 /**text venta info about y titulo**/
-.aboutinfo, .ventabici h2 {
-    text-align: justify; 
-    line-height: 1.2; 
-    max-width: 1250px; 
-    margin: 0 auto; 
-    padding: 0px; 
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #050704;
-}
 .titulo{
     text-align: center;
 }
-
-.aboutinfo p, .txt p {
-    text-align: justify; 
-    line-height: 1.2; 
-    max-width: 1250px; 
-    margin: 0 auto; 
-    padding: 0px; 
+.estilovida{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0px;
     font-size: 1.5rem;
     font-weight: 500;
     color: #050704;
+    border: 1.8px solid  #62bf4a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+.imagen1{
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
+.texto1{
+    margin-left: 50px;
+    padding: 20px;
+    background-color:#fff;
+}
+.accesibilidad{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #050704;
+    border: 1.8px solid #62bf4a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.texto2{
+    margin-right: 50px;
+    padding: 20px;
+    background-color: #fff;
+}
+.imagen2{
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
+.comunidad{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    line-height: 1.2;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 0px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #050704;
+    border: 1.8px solid #62bf4a;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.texto3{
+    margin-left: 50px;
+    padding: 20px;
+    background-color: #fff;
+}
+.imagen3{
+    width: 350px;
+    height: 250px;
+    object-fit: cover;
+}
 .fondoabout {
     height: 575px;
     position: relative; 
