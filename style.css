@@ -57,7 +57,7 @@ a ,ul ,li {
 }
 /**Register form**/
 
-.register-form {
+.custom-register {
     width: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -67,19 +67,19 @@ a ,ul ,li {
     padding: 30px 40px;
 }
 
-.register-form h1 {
+.custom-register-title {
     font-size: 36px;
     text-align: center;
 }
 
-.register-form .input-box {
+.custom-register-input-box {
     position: relative;
     width: 100%;
     height: 50px;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
-.register-form input {
+.custom-register-input {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -89,14 +89,43 @@ a ,ul ,li {
     border-radius: 40px;
     font-size: 16px;
     color: #fff;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 45px 20px 20px;
 }
 
-.register-form input::placeholder {
+.custom-register-input::placeholder {
     color: #fff;
 }
 
-.register-form .btn {
+.custom-register-icon {
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+
+.custom-register-remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    font-size: 14.5px;
+    margin: 15px 0; 
+}
+
+.custom-register-remember-forgot-label {
+    margin-right: 5px; 
+}
+
+.custom-register-remember-forgot-checkbox {
+    transform: scale(1.5);
+}
+
+.custom-register-remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.custom-register-btn {
     width: 100%;
     height: 45px;
     background: #fff;
@@ -110,32 +139,44 @@ a ,ul ,li {
     font-weight: 600;
 }
 
-.register-form .register-link {
+.custom-register-link {
     font-size: 14.5px;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px 0 15px;
 }
 
-.register-form .register-link .back-to-login button {
-    background: transparent;
-    border: none;
+.custom-register-link a {
     color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.custom-register-link a:hover {
     text-decoration: underline;
-    cursor: pointer;
-    font-size: 14.5px;
 }
 
-.register-form .register-link .back-to-login button:hover {
-    color: #ccc; /* Cambia el color al pasar el mouse */
-}
-
-.wrapper {
+.custom-wrapper {
     display: flex;
     justify-content: center;
     align-items: center; 
     height: 100vh;
 }
+.custom-back-btn {
+    width: 420px; /* Mismo ancho que el formulario */
+    height: 45px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+.custom-back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 /**Login form**/
 
@@ -306,10 +347,11 @@ a ,ul ,li {
     font-size: 1.5rem;
 }
 /**text venta info about y titulo**/
-.titulo{
+.titulo {
     text-align: center;
 }
-.estilovida{
+
+.estilovida {
     justify-content: space-around;
     display: flex;
     align-items: center;
@@ -323,17 +365,20 @@ a ,ul ,li {
     border: 1.8px solid  #62bf4a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.imagen1{
+
+.imagen1 {
     width: 350px;
     height: 250px;
     object-fit: cover;
 }
-.texto1{
+
+.texto1 {
     margin-left: 50px;
     padding: 20px;
     background-color:#fff;
 }
-.accesibilidad{
+
+.accesibilidad {
     justify-content: space-around;
     display: flex;
     align-items: center;
@@ -347,17 +392,20 @@ a ,ul ,li {
     border: 1.8px solid #62bf4a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.texto2{
+
+.texto2 {
     margin-right: 50px;
     padding: 20px;
     background-color: #fff;
 }
-.imagen2{
+
+.imagen2 {
     width: 350px;
     height: 250px;
     object-fit: cover;
 }
-.comunidad{
+
+.comunidad {
     justify-content: space-around;
     display: flex;
     align-items: center;
@@ -371,16 +419,19 @@ a ,ul ,li {
     border: 1.8px solid #62bf4a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.texto3{
+
+.texto3 {
     margin-left: 50px;
     padding: 20px;
     background-color: #fff;
 }
-.imagen3{
+
+.imagen3 {
     width: 350px;
     height: 250px;
     object-fit: cover;
 }
+
 .fondoabout {
     height: 575px;
     position: relative; 
