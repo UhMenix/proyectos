@@ -162,7 +162,7 @@ a ,ul ,li {
     height: 100vh;
 }
 .custom-back-btn {
-    width: 420px; /* Mismo ancho que el formulario */
+    width: 420px; 
     height: 45px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
@@ -229,7 +229,6 @@ a ,ul ,li {
 
 .login-form .remember-forgot {
     display: flex;
-    justify-content: space-between;
     align-items: center; 
     font-size: 14.5px;
     margin: 15px 0; 
@@ -240,8 +239,7 @@ a ,ul ,li {
 }
 
 .login-form .remember-forgot input[type="checkbox"] {
-    transform: scale(1.5);
-    
+    transform: scale(1.5);   
 }
 
 .login-form .remember-forgot a {
@@ -286,7 +284,7 @@ a ,ul ,li {
     height: 100vh;
 }
 
-/**html bikes**/
+/**bikes**/
 .ventabici {
     padding: 20px;
     background-color: #f3faf1;
@@ -492,7 +490,7 @@ a ,ul ,li {
 .carousel-control-next {
     right: 0; 
 }
-
+/**footer**/
 .footer-container {
     width: 100%;
     display: flex;
@@ -538,4 +536,18 @@ a ,ul ,li {
 
 .cont img {
     width: 350px;
+}
+.map-container {
+    width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    position: relative; 
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
 }
