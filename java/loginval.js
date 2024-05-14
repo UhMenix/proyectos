@@ -9,10 +9,10 @@ function validar() {
 
     var mensajesError = [];
 
-    if (username.value === null || username.value === '') {
+    if (username.value ===null || username.value==='') {
         mensajesError.push("Ingrese su nombre");
     } else if (username.value.length < 3 || username.value.length > 20) {
-        mensajesError.push("El nombre debe tener entre 3 y 20 caracteres");
+        mensajesError.push("El nombre debe tener entre 3 y 20 caracteres")
     }
 
     if (correo.value === null || correo.value === '') {
@@ -36,9 +36,8 @@ function validar() {
     // Mostrar mensajes de error
     if (mensajesError.length > 0) {
         error.innerHTML = mensajesError.join('<br>');
-        return false; // Evita que el formulario se envíe si hay errores
+        return false; 
     }
 
-    // Si no hay errores, se puede enviar el formulario
     return true;
 }
