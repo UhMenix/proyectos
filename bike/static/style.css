@@ -1,4 +1,5 @@
 /**navbar**/
+
 html, body {
     margin: 0;
     background-color: #f3faf1;
@@ -57,12 +58,6 @@ a ,ul ,li {
 }
 /**Register form**/
 
-.bodybg{
-    background: url(bike/static/img/bg.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
 .custom-register {
     width: 420px;
     background: transparent;
@@ -94,12 +89,12 @@ a ,ul ,li {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: black;
     padding: 20px 45px 20px 20px;
 }
 
 .custom-register-input::placeholder {
-    color: #fff;
+    color: black;
 }
 
 .custom-register-icon {
@@ -127,14 +122,14 @@ a ,ul ,li {
 }
 
 .custom-register-remember-forgot a {
-    color: #fff;
+    color: black;
     text-decoration: none;
 }
 
 .custom-register-btn {
     width: 100%;
     height: 45px;
-    background: #fff;
+    background: white;
     border: none;
     outline: none;
     border-radius: 40px;
@@ -152,7 +147,7 @@ a ,ul ,li {
 }
 
 .custom-register-link a {
-    color: #fff;
+    color: white;
     text-decoration: none;
     font-weight: 600;
 }
@@ -174,7 +169,7 @@ a ,ul ,li {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 12px;
     font-size: 16px;
-    color: #fff;
+    color: white;
     margin-top: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -191,7 +186,7 @@ a ,ul ,li {
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .2);
     backdrop-filter: blur(9px);
-    color: #fff;
+    color: white;
     border-radius: 12px;
     padding: 30px 40px;
 }
@@ -217,12 +212,12 @@ a ,ul ,li {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     font-size: 16px;
-    color: #fff;
+    color: white;
     padding: 20px 45px 20px 20px;
 }
 
 .login-form input::placeholder {
-    color: #fff;
+    color: white;
 }
 
 .login-form i {
@@ -249,21 +244,21 @@ a ,ul ,li {
 }
 
 .login-form .remember-forgot a {
-    color: #fff;
+    color: white;
     text-decoration: none;
 }
 
 .login-form .btn {
     width: 100%;
     height: 45px;
-    background: #fff;
+    background: black;
     border: none;
     outline: none;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     cursor: pointer;
     font-size: 16px;
-    color: #333;
+    color: white;
     font-weight: 600;
 }
 
@@ -274,7 +269,7 @@ a ,ul ,li {
 }
 
 .login-form .register-link p a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-weight: 600;
 }
@@ -309,7 +304,8 @@ a ,ul ,li {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
-    border: 1.8px solid  #62bf4a; 
+    border: 1.8px solid #62bf4a;
+    position: relative;
 }
 
 .producto img {
@@ -337,12 +333,12 @@ a ,ul ,li {
     display: flex;
 }
 
-.text h2  {
-    text-align: justify; 
-    line-height: 1.2; 
-    max-width: 1250px; 
-    margin: 0 auto; 
-    padding: 30px; 
+.text h2 {
+    text-align: justify;
+    line-height: 1.2;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 30px;
     font-size: 1.5rem;
     font-weight: 500;
 }
@@ -350,6 +346,27 @@ a ,ul ,li {
 .text p {
     font-size: 1.5rem;
 }
+
+.producto:hover .info-hover {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.info-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 /**text venta info about y titulo**/
 .titulo {
     text-align: center;
@@ -522,7 +539,7 @@ a ,ul ,li {
     right: auto;
 }
 
-.txt{
+.txt {
     color: white;
     background-color: black;
     padding: 5px; 

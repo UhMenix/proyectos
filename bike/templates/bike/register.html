@@ -13,7 +13,7 @@
     <style>
     </style>
 </head>
-<body class="bodybg">
+<body class="bodybg" style="background: url({% static 'img/bg.jpg' %});background-size: cover;background-position: center; ">
     <div class="custom-wrapper">
         <form class="custom-register" onsubmit="return Registrarse()">
             <h1 class="custom-register-title">Registrarse</h1>
@@ -39,7 +39,7 @@
             </div>  
             <input type="submit" value="Enviar" class="custom-register-btn">
             <div class="custom-register-link">
-                <p><a href="login.html">Volver al inicio de sesión</a></p>
+                <p><a href="{% url 'login' %}">Volver al inicio de sesión</a></p>
             </div>
         </form>
         <div id="error"></div>

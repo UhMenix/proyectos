@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  index, about, contact, bikes,api, clientes,listadoSQL, login, register
+from .views import  index, about, contact, bikes,api, clientes,listadoSQL, login, register, tienda, agregar_al_carrito
 
 
 urlpatterns = [
@@ -12,6 +12,9 @@ urlpatterns = [
     path('listadoSQL',listadoSQL, name='listadoSQL'),
     path('login', login, name='login'),
     path('register', register, name='register'),
+    path('', tienda, name='tienda'),
+    path('agregar-al-carrito/<int:producto_id>/', agregar_al_carrito, name='agregar_al_carrito'),
+    
 ]
 
   
