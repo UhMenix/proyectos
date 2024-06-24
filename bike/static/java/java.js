@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Username:', username);
         console.log('Password:', password);
 
-        window.location.href = 'index.html'; 
+        window.location.replace("https://www.youtube.com/watch?v=AsIklTtgwdU"); 
     });
 });
 
