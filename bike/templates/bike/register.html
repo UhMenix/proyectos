@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='{% static "./style.css" %}' rel="stylesheet" type="text/css"/>
+    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
     <style>
     </style>
 </head>
-<body class="bodybg" style="background: url({% static 'img/bg.jpg' %});background-size: cover;background-position: center; ">
+<body class="bodybg" style="background: url('{% static 'img/bg.jpg' %}'); background-size: cover;background-position: center; ">
     <div class="custom-wrapper">
         <form class="custom-register" onsubmit="return Registrarse()">
             <h1 class="custom-register-title">Registrarse</h1>
@@ -43,7 +43,16 @@
             </div>
         </form>
         <div id="error"></div>
-    </div>    
-    <script src="java/app.js"></script>       
+    </div>
+    <!-- Formulario adicional -->
+    <div class="custom-wrapper">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    <script src="{% static 'java/app.js' %}"></script>
+
 </body>
 </html>

@@ -89,12 +89,12 @@ a ,ul ,li {
     border: 2px solid rgba(255, 255, 255, .2);
     border-radius: 40px;
     font-size: 16px;
-    color: black;
+    color: white;
     padding: 20px 45px 20px 20px;
 }
 
 .custom-register-input::placeholder {
-    color: black;
+    color: white;
 }
 
 .custom-register-icon {
@@ -147,7 +147,7 @@ a ,ul ,li {
 }
 
 .custom-register-link a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: 600;
 }
@@ -176,7 +176,7 @@ a ,ul ,li {
 }
 
 .custom-back-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: black;
 }
 
 /**Login form**/
