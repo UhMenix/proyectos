@@ -15,44 +15,38 @@
 </head>
 <body class="bodybg" style="background: url('{% static 'img/bg.jpg' %}'); background-size: cover;background-position: center; ">
     <div class="custom-wrapper">
-        <form class="custom-register" onsubmit="return Registrarse()">
+        <form class="custom-register" method="post">
+            {% csrf_token %}
             <h1 class="custom-register-title">Registrarse</h1>
             <div class="custom-register-input-box">
-                <label for="custom-Nombre">Nombre</label>
-                <input type="text" id="custom-Nombre" name="custom-Nombre" class="custom-register-input" required minlength="3" maxlength="22">
-            </div>  
+                <label for="id_username">Nombre de usuario</label>
+                <input type="text" id="id_username" name="username" class="custom-register-input" required>
+            </div>
             <div class="custom-register-input-box">
-                <label for="custom-Apellido">Apellido</label>
-                <input type="text" id="custom-Apellido" name="custom-Apellido" class="custom-register-input" required minlength="3" maxlength="22">
-            </div>  
+                <label for="id_password1">Contraseña</label>
+                <input type="password" id="id_password1" name="password1" class="custom-register-input" required>
+            </div>
             <div class="custom-register-input-box">
-                <label for="custom-Rut">Rut</label>
-                <input type="text" id="custom-Rut" name="custom-Rut" class="custom-register-input" required minlength="9" maxlength="10">
-            </div>   
-            <div class="custom-register-input-box">
-                <label for="custom-correo">Correo</label>
-                <input type="email" id="custom-correo" name="custom-correo" class="custom-register-input">
-            </div>     
-            <div class="custom-register-input-box">
-                <label for="custom-contraseña">Contraseña</label>
-                <input type="password" id="custom-contraseña" name="custom-contraseña" class="custom-register-input" required min="4" maxlength="22">
-            </div>  
-            <input type="submit" value="Enviar" class="custom-register-btn">
+                <label for="id_password2">Confirmar contraseña</label>
+                <input type="password" id="id_password2" name="password2" class="custom-register-input" required>
+            </div>
+            <button type="submit" class="custom-register-btn">Enviar</button>
             <div class="custom-register-link">
                 <p><a href="{% url 'login' %}">Volver al inicio de sesión</a></p>
             </div>
         </form>
-        <div id="error"></div>
-    </div>
-    <!-- Formulario adicional -->
-    <div class="custom-wrapper">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Registrarse</button>
-        </form>
+        <div id="error">
+            {% if form.errors %}
+                <ul class="errorlist">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
     </div>
     <script src="{% static 'java/app.js' %}"></script>
-
 </body>
 </html>

@@ -8,14 +8,19 @@
     <link href='{% static "./style.css" %}' rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <title>Proyecto</title>    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">    
+    <title>Iniciar Sesión</title>    
 </head>
 <body class="bodybg" style="background: url({% static 'img/bg.jpg' %});background-size: cover;background-position: center; ">
     <div class="wrapper">
         <form class="login-form" id="login-form" method="post">
             {% csrf_token %}
             <h1>Iniciar sesión</h1>
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    Nombre de usuario o contraseña incorrectos.
+                </div>
+            {% endif %}
             <div class="input-box">
                 <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
                 <i class='bx bxs-user'></i>
@@ -26,7 +31,7 @@
             </div>
             <button type="submit" class="btn">Iniciar sesión</button>
             <div class="remember-forgot">
-                <label><input type="checkbox">Recordarme</label>
+                <label><input type="checkbox" name="remember_me"> Recordarme</label>
             </div>
             <div class="register-link">
                 <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Regístrate</a></p>
@@ -34,7 +39,6 @@
         </form>
     </div>
 
-    <script src="{% static 'java/java.js' %}"></script>
     <script src="{% static 'java/validaciones.js' %}"></script>
 </body>
 </html>

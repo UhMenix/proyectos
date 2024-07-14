@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bike',
+    'rest_framework',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'bikeland.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'bike/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,3 +125,14 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'bike/static'),)
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Redirección después del inicio de sesión
+LOGIN_REDIRECT_URL = '/bike/carrito/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.example.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your_email@example.com'
+EMAIL_HOST_PASSWORD = 'your_email_password'
