@@ -1,16 +1,14 @@
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm
+from django.contrib.auth import login
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views import View
-from django.db.utils import IntegrityError
 from django.views.generic import ListView, CreateView
 from rest_framework import generics
-from .models import Producto, Boleta, DetalleCompra, Cliente, Carrito, CarritoProducto, Genero
+from .models import Producto, Boleta, Cliente, Carrito, CarritoProducto, Genero
 from .forms import ProductoForm
 from .serializers import ProductoSerializer
 
@@ -34,7 +32,7 @@ class BikesView(ListView):
     model = Producto
     template_name = 'bike/bikes.html'
     context_object_name = 'productos'
-    paginate_by = 12  # 12 productos por página
+    paginate_by = 12 
 
 # Vista para la API
 class ApiView(View):
@@ -56,7 +54,6 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         user = form.save()
 
-        # Obtener el género por defecto o el seleccionado por el usuario
         genero_id = self.request.POST.get('genero_id', 1)  
 
         try:
@@ -85,33 +82,38 @@ class RegisterView(CreateView):
 
 # Vista para listar y crear productos
 
-def agregar_al_carrito(request, pk):
-    producto = get_object_or_404(Producto, pk=pk)
-    user = request.user
+def crear_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            producto = form.save()
+            messages.success(request, '¡Producto creado exitosamente!')
+            return redirect('crear_producto')  
+    else:
+        form = ProductoForm()
+    
+    context = {
+        'form': form,
+    }
+ 
 
-    try:
-        # Obtener el cliente del usuario o crear uno nuevo si no existe
-        cliente, created = Cliente.objects.get_or_create(user=user, defaults={
-            'rut': user.username,
-            'nombre': '',
-            'apellido_M': '',
-            'apellido_P': '',
-            'telefono': '',
-            'direccion': '',
-            'genero': Genero.objects.get(idGenero=1)  # Ajustar según tu lógica de género predeterminado
-        })
+def agregar_al_carrito(request, producto_id):
+    producto = get_object_or_404(Producto, pk=producto_id)
+    
+    if request.method == 'POST':
+        
+        cantidad = int(request.POST.get('cantidad', 1))  
+        
+        carrito, created = Carrito.objects.get_or_create(usuario=request.user)
+        
+        carrito_producto, created = CarritoProducto.objects.get_or_create(carrito=carrito, producto=producto)
+        carrito_producto.cantidad += cantidad
+        carrito_producto.save()
 
-        # Obtener o crear el carrito para el cliente
-        carrito, created = Carrito.objects.get_or_create(cliente=cliente)
-
-        # Agregar el producto al carrito
-        CarritoProducto.objects.create(carrito=carrito, producto=producto, cantidad=1)
-
-        messages.success(request, f'Se agregó {producto.nombre} al carrito.')
-    except Exception as e:
-        messages.error(request, f'Error al agregar el producto al carrito: {e}')
-
-    return redirect('bikes')
+        messages.success(request, f'Se añadió "{producto.nombre}" al carrito.')
+        return redirect('bikes')  
+ 
+    return redirect('bikes') 
 
 def confirmar_compra(request):
     return render(request, 'bike/confirmar_compra.html')

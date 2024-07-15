@@ -138,5 +138,6 @@ EMAIL_HOST_USER = 'tu-email@dominio.com'
 EMAIL_HOST_PASSWORD = 'tu-contraseña'
 DEFAULT_FROM_EMAIL = 'tu-email@dominio.com'
 
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = BASE_DIR / 'media'

@@ -9,11 +9,14 @@
     <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Catálogo de Bicicletas</title>
 </head>
 <body>
+    <!-- Encabezado y navegación -->
     <header class="header">
+        <!-- Barra de navegación -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/image.png' %}" alt="home"> </a>
@@ -47,12 +50,26 @@
     </header>
     
     <div class="container mt-5">
+        <!-- Título y descripción -->
         <h2>¡Bienvenido al catálogo de bicicletas de BikeLand!</h2>
         <p>En BikeLand, creemos que cada pedalada es una oportunidad para vivir aventuras emocionantes y descubrir nuevos horizontes. Por eso, te ofrecemos una amplia selección de bicicletas diseñadas con la más alta calidad y atención al detalle.</p>
 
-        <!-- Botón para crear un nuevo producto -->
-        <a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">Crear Nuevo Producto</a>
+        <!-- Mensajes flash -->
+        {% if messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
         
+        <!-- Botón para crear un nuevo producto (solo visible para staff) -->
+        {% if user.is_staff %}
+        <a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">Crear Nuevo Producto</a>
+        {% endif %}
+        
+        <!-- Listado de productos -->
         <div class="row">
             {% for producto in productos %}
             <div class="col-md-4">
@@ -63,12 +80,13 @@
                         <p class="card-text">{{ producto.descripcion }}</p>
                         <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
 
-                        <!-- Botones para actualizar y eliminar producto -->
-                        <a href="{% url 'actualizar_producto' producto.pk %}" class="btn btn-sm btn-outline-secondary me-2">Actualizar</a>
-                        <a href="{% url 'eliminar_producto' producto.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                        <!-- Botón para eliminar producto (solo visible para staff) -->
+                        {% if user.is_staff %}
+                        <button type="button" class="btn btn-sm btn-outline-danger eliminar-producto" data-id="{{ producto.pk }}">Eliminar</button>
+                        {% endif %}
 
-                        <!-- Botón para agregar al carrito -->
-                        <form action="{% url 'agregar_al_carrito' producto.pk %}" method="post" class="mt-2">
+                        <!-- Formulario para agregar al carrito -->
+                        <form action="{% url 'agregar_al_carrito' producto.pk %}" method="post" class="mt-2" id="form-agregar-carrito">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-sm btn-success">Agregar al Carrito</button>
                         </form>
@@ -79,33 +97,19 @@
         </div>
     </div>
 
-    <!-- Carrito de Compras -->
     <div class="container mt-5">
         <div class="card">
             <div class="card-header">
                 Carrito de Compras
             </div>
             <div class="card-body">
-                <ul class="list-group">
-                    {% for item in carrito.carritoproducto_set.all %}
-                    <li class="list-group-item">
-                        {{ item.producto.nombre }} - Cantidad: {{ item.cantidad }}
-                        <form action="{% url 'eliminar_del_carrito' item.pk %}" method="post" class="float-end">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                        </form>
-                    </li>
-                    {% empty %}
-                    <li class="list-group-item">No hay productos en el carrito.</li>
-                    {% endfor %}
-                </ul>
-                <hr>
-                <p class="card-text"><strong>Total:</strong> ${{ total }}</p>
-                <a href="{% url 'confirmar_compra' %}" class="btn btn-primary">Confirmar Compra</a>
+
+                <p id="mensaje-carrito"></p>
             </div>
         </div>
     </div>
     
+    <!-- Pie de página -->
     <footer class="footer-container mt-5">
         <div class="footer-info">
             <p>&copy; 2024 BikeLand. Todos los derechos reservados.</p>
@@ -117,6 +121,56 @@
         </div>
     </footer>
 
+    <!-- Script para manejar acciones de editar y eliminar productos -->
+    <script>
+        $(document).ready(function() {
+            $('.editar-producto').click(function() {
+                var productId = $(this).data('id');
+                window.location.href = "{% url 'actualizar_producto' 0 %}".replace('0', productId);
+            });
+
+            // Función para eliminar producto
+            $('.eliminar-producto').click(function() {
+                var productId = $(this).data('id');
+                if (confirm('¿Estás seguro de eliminar este producto?')) {
+                    $.ajax({
+                        url: "{% url 'eliminar_producto' 0 %}".replace('0', productId),
+                        method: 'POST',
+                        beforeSend: function(xhr) {
+                            xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+                        },
+                        success: function(response) {
+                            alert('Producto eliminado exitosamente');
+                            location.reload(); 
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Producto eliminado refresca la pagina');
+                            console.error(xhr.responseText);
+                        }
+                    });
+                }
+            });
+
+            // Escuchar el evento submit del formulario de agregar al carrito
+            $('#form-agregar-carrito').submit(function(event) {
+                event.preventDefault();  
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        $('#mensaje-carrito').text('Carrito de compra: Producto ' + response.producto + ' añadido.');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al agregar al carrito:', error);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
