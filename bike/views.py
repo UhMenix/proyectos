@@ -84,6 +84,38 @@ class RegisterView(CreateView):
             return super().form_invalid(form)
 
 # Vista para listar y crear productos
+
+def agregar_al_carrito(request, pk):
+    producto = get_object_or_404(Producto, pk=pk)
+    user = request.user
+
+    try:
+        # Obtener el cliente del usuario o crear uno nuevo si no existe
+        cliente, created = Cliente.objects.get_or_create(user=user, defaults={
+            'rut': user.username,
+            'nombre': '',
+            'apellido_M': '',
+            'apellido_P': '',
+            'telefono': '',
+            'direccion': '',
+            'genero': Genero.objects.get(idGenero=1)  # Ajustar según tu lógica de género predeterminado
+        })
+
+        # Obtener o crear el carrito para el cliente
+        carrito, created = Carrito.objects.get_or_create(cliente=cliente)
+
+        # Agregar el producto al carrito
+        CarritoProducto.objects.create(carrito=carrito, producto=producto, cantidad=1)
+
+        messages.success(request, f'Se agregó {producto.nombre} al carrito.')
+    except Exception as e:
+        messages.error(request, f'Error al agregar el producto al carrito: {e}')
+
+    return redirect('bikes')
+
+def confirmar_compra(request):
+    return render(request, 'bike/confirmar_compra.html')
+
 class ListaProductosView(ListView):
     """
     Vista para listar y crear productos.

@@ -66,6 +66,12 @@
                         <!-- Botones para actualizar y eliminar producto -->
                         <a href="{% url 'actualizar_producto' producto.pk %}" class="btn btn-sm btn-outline-secondary me-2">Actualizar</a>
                         <a href="{% url 'eliminar_producto' producto.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+
+                        <!-- Botón para agregar al carrito -->
+                        <form action="{% url 'agregar_al_carrito' producto.pk %}" method="post" class="mt-2">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-success">Agregar al Carrito</button>
+                        </form>
                     </div>
                 </div>
             </div>

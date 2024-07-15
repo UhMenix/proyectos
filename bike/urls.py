@@ -32,4 +32,6 @@ urlpatterns = [
     path('password_reset_request/', views.password_reset_request, name='password_reset_request'),
     path('cliente/compras/', views.ComprasClienteView.as_view(), name='compras_cliente'),  
     path('api/productos/create/', views.ProductoListCreateAPIView.as_view(), name='producto-create'),
+    path('confirmar_compra/', views.confirmar_compra, name='confirmar_compra'),
+    path('agregar-al-carrito/<int:pk>/', views.agregar_al_carrito, name='agregar_al_carrito'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
