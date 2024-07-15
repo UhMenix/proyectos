@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Compras Realizadas por {{ request.user.username }}</title>
+    <!-- Agrega aquí tus etiquetas meta, enlaces a CSS, etc., según sea necesario -->
+</head>
+<body>
+    <h2>Compras Realizadas por {{ request.user.username }}</h2>
+    <ul>
+        {% for boleta in boletas %}
+            <li>Boleta #{{ boleta.id }} - {{ boleta.fecha_compra }}</li>
+            <ul>
+                {% for detalle in boleta.detalles_compra.all %}
+                    <li>{{ detalle.producto.nombre }} x {{ detalle.cantidad }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>

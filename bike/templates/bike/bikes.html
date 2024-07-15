@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">    
-    <title>Proyecto</title>
+    <title>Catálogo de Bicicletas</title>
 </head>
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static '/img/image.png' %}" alt="home"> </a>
+                <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/image.png' %}" alt="home"> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -39,51 +40,74 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'register' %}">Register</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'carrito_compra' %}">Carrito</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     
-    <div class="ventabici">
-        <h2>
-            ¡Bienvenido al catálogo de bicicletas de BikeLand!
-            En BikeLand, creemos que cada pedalada es una oportunidad para vivir aventuras
-            emocionantes y descubrir nuevos horizontes. Por eso, te ofrecemos una amplia
-            selección de bicicletas diseñadas con la más alta calidad y atención al detalle.
-        </h2>
+    <div class="container mt-5">
+        <h2>¡Bienvenido al catálogo de bicicletas de BikeLand!</h2>
+        <p>En BikeLand, creemos que cada pedalada es una oportunidad para vivir aventuras emocionantes y descubrir nuevos horizontes. Por eso, te ofrecemos una amplia selección de bicicletas diseñadas con la más alta calidad y atención al detalle.</p>
+
+        <!-- Botón para crear un nuevo producto -->
+        <a href="{% url 'crear_producto' %}" class="btn btn-primary mb-3">Crear Nuevo Producto</a>
+        
+        <div class="row">
+            {% for producto in productos %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text">{{ producto.descripcion }}</p>
+                        <p class="card-text"><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+                        <!-- Botones para actualizar y eliminar producto -->
+                        <a href="{% url 'actualizar_producto' producto.pk %}" class="btn btn-sm btn-outline-secondary me-2">Actualizar</a>
+                        <a href="{% url 'eliminar_producto' producto.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-    
-    <div class="productos">
-        {% for producto in productos %}
-        <div class="producto">
-            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
-            <div class="info-venta">
-                <h3>{{ producto.nombre }}</h3>
-                <p class="infobici">{{ producto.descripcion }}</p>
-                <p class="infobici">Precio: ${{ producto.precio }}</p>
-                <form action="{% url 'agregar_al_carrito' producto.pk %}" method="post">
-                    {% csrf_token %}
-                    <label for="cantidad">Cantidad:</label>
-                    <input type="number" id="cantidad" name="cantidad" value="1" min="1">
-                    <button type="submit" class="btn btn-primary">Agregar al Carrito</button>
-                </form>
+
+    <!-- Carrito de Compras -->
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                Carrito de Compras
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for item in carrito.carritoproducto_set.all %}
+                    <li class="list-group-item">
+                        {{ item.producto.nombre }} - Cantidad: {{ item.cantidad }}
+                        <form action="{% url 'eliminar_del_carrito' item.pk %}" method="post" class="float-end">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                        </form>
+                    </li>
+                    {% empty %}
+                    <li class="list-group-item">No hay productos en el carrito.</li>
+                    {% endfor %}
+                </ul>
+                <hr>
+                <p class="card-text"><strong>Total:</strong> ${{ total }}</p>
+                <a href="{% url 'confirmar_compra' %}" class="btn btn-primary">Confirmar Compra</a>
             </div>
         </div>
-        {% endfor %}
     </div>
     
-    <footer class="footer-container">
+    <footer class="footer-container mt-5">
         <div class="footer-info">
             <p>&copy; 2024 BikeLand. Todos los derechos reservados.</p>
         </div>
         <div class="footer-social">
-            <a href="https://www.facebook.com/BikeLand" target="_blank"><img src="{% static '/img/facebook-logo-facebook-logo-transparent-facebook-icon-transparent-free-free-png.webp'%}" alt="Facebook"></a>
-            <a href="https://www.instagram.com/BikeLand" target="_blank"><img src="{% static '/img/Instagram_icon.png.webp'%}" alt="Instagram"></a>
-            <a href="https://www.twitter.com/BikeLand" target="_blank"><img src="{% static '/img/twitter-logo-twitter-icon-transparent-free-free-png.webp'%}" alt="Twitter"></a>
+            <a href="https://www.facebook.com/BikeLand" target="_blank"><img src="{% static 'img/facebook-logo-facebook-logo-transparent-facebook-icon-transparent-free-free-png.webp' %}" alt="Facebook"></a>
+            <a href="https://www.instagram.com/BikeLand" target="_blank"><img src="{% static 'img/Instagram_icon.png.webp' %}" alt="Instagram"></a>
+            <a href="https://www.twitter.com/BikeLand" target="_blank"><img src="{% static 'img/twitter-logo-twitter-icon-transparent-free-free-png.webp' %}" alt="Twitter"></a>
         </div>
     </footer>
 

@@ -131,8 +131,12 @@ LOGIN_REDIRECT_URL = '/bike/carrito/'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.example.com'
+EMAIL_HOST = 'smtp.tu-servidor-de-correo.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@example.com'
-EMAIL_HOST_PASSWORD = 'your_email_password'
+EMAIL_HOST_USER = 'tu-email@dominio.com'
+EMAIL_HOST_PASSWORD = 'tu-contraseña'
+DEFAULT_FROM_EMAIL = 'tu-email@dominio.com'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

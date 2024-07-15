@@ -46,6 +46,13 @@
                 </ul>
             {% endif %}
         </div>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
     <script src="{% static 'java/app.js' %}"></script>
 </body>

@@ -10,4 +10,4 @@ class ProductoForm(forms.ModelForm):
 class RegistroClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = '__all__'
+        fields = ['direccion', 'telefono']
